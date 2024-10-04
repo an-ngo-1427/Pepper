@@ -1,36 +1,57 @@
+import { Avatar, Box, Button, Container, FormLabel, Stack, StackDivider, useDisclosure } from "@chakra-ui/react";
 import React, { useState } from "react";
-
+import { Form } from "react-router-dom";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+import CompanionForm from "../Components/Companion/CompanionForm";
+import { useQuery } from "@tanstack/react-query";
+import { getCompanions } from "../QueryHelpers/companionQuery";
 const CompanionPage = () => {
-  const [companionInfo, setCompanionInfo] = useState({
-    name: "",
-    age: "",
-    breed: "",
-    specialNeeds: "",
-  });
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { data } = useQuery({ queryKey: ['companions'], queryFn: getCompanions })
 
-  const handleChange = (e) => {
-    setCompanionInfo({
-      ...companionInfo,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(
-      `Companion Info: ${companionInfo.name}, Age: ${companionInfo.age}, Breed: ${companionInfo.breed}, Special Needs: ${companionInfo.specialNeeds}`
-    );
-  };
-
+  console.log('etnered')
   return (
-    <form onSubmit={handleSubmit} className="companion-form">
-      <h2>Enter Companion Information</h2>
-      <input type="text" name="name" placeholder="Pet's Name" onChange={handleChange} required />
-      <input type="number" name="age" placeholder="Age" onChange={handleChange} required />
-      <input type="text" name="breed" placeholder="Breed" onChange={handleChange} required />
-      <textarea name="specialNeeds" placeholder="Special Needs" onChange={handleChange}></textarea>
-      <button type="submit">Save Info</button>
-    </form>
+    <>
+      <Button margin='auto' onClick={onOpen}>Add Companion</Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Companion</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <CompanionForm modalContexts={{onClose}} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      <Stack
+        divider={<StackDivider/>}
+        width='50%'
+        margin='auto'
+      >
+        {data?.companions.map(companion=>{
+          return(
+            <Box
+              direction='row'
+              gap='10px'
+              display={'flex'}
+              alignItems={'center'}
+            >
+              <Avatar></Avatar>
+              <Box>{companion?.name}</Box>
+            </Box>
+        )
+        })}
+      </Stack>
+    </>
+
   );
 };
 

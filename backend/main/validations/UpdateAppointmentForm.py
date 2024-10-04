@@ -17,11 +17,11 @@ class UpdateAppointmentForm(forms.ModelForm):
         start_time = self.instance.start_time
         end_time = self.instance.end_time
         specificDate = start_time.date()
-        print('this is address',appointmentAddress == '')
+        print('this is address',appointmentAddress)
 
         errors = {}
         if(appointmentAddress == ''):
-            errors['address'] = 'address required'
+            errors['appointment_address'] = 'address required'
         if(companion is None):
             errors['companion'] = 'companion required'
         if(owner is None):

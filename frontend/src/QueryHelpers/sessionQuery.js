@@ -1,6 +1,6 @@
 // signing up a user
 import Cookies from 'js-cookie'
-class MyError extends(Error){
+export class MyError extends(Error){
     constructor(errObj,message){
         super(message)
         this.errObj = errObj
@@ -49,6 +49,18 @@ export async function userLogin(formData){
         throw new MyError(data)
     }
 }
-// export async function logOut(){
-//     const response = await fetch('api/signout')
-// }
+
+export async function getAllAppointments(){
+    const response = await fetch('api/appointments')
+    const data = await response.json()
+    if(response.ok){
+        return data
+    }else{
+        throw new MyError(data)
+    }
+}
+export async function logOut(){
+    const response = await fetch('api/signout')
+    const data = await response.json()
+    return data
+}
