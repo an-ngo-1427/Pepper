@@ -105,7 +105,7 @@ export default function SignUp() {
             className="sign-up-input"
             label="email"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="email"
+            placeholder="Email"
             type="email"
             required
           />
@@ -113,22 +113,23 @@ export default function SignUp() {
             className="sign-up-input"
             label="password"
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
+            placeholder="Create password"
             type="password"
             required
           />
           <input
+            className="sign-up-input"
             label="confirm"
             onChange={(e) => setConfirmedPassword(e.target.value)}
+            placeholder="Confirm your password"
             type="password"
-            placeholder="confirm your password"
             required
           />
           <input
             className="sign-up-input"
             label="image"
             onChange={(e) => setImage(e.target.value)}
-            placeholder="Image url"
+            placeholder="Add image url"
           />
           <Button size="md" isLoading={userMutation.isPending} type="submit">
             Submit
