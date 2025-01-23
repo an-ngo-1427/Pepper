@@ -1,7 +1,6 @@
 .sign-up-form {
   display: flex;
   justify-content: center;
-  /* border: 5px solid red; */
 }
 
 .sign-up-box {
@@ -13,16 +12,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 5px solid green; */
   padding: 20px 80px;
   margin: auto;
   min-width: 100px;
-}
-
-.form-heading {
-  font-size: 36px;
-  font-weight: bold;
-  margin: 5px 0px;
 }
 
 .sign-up-input {
@@ -32,8 +24,3 @@
   border-radius: 5px;
   margin: 6px 0px;
 }
-
-/* .sign-up-submit-button {
-  border: 2px solid red;
-  width: 50px;
-} */
