@@ -125,15 +125,18 @@ export default function SignUp() {
             type="password"
             required
           />
-          <input
+          {/* <input
             className="sign-up-input"
             label="image"
             onChange={(e) => setImage(e.target.value)}
             placeholder="Add image url"
-          />
-          <Button size="md" isLoading={userMutation.isPending} type="submit">
+          /> */}
+          <button
+            className="sign-up-button"
+            isLoading={userMutation.isPending}
+            type="submit">
             Submit
-          </Button>
+          </button>
         </Stack>
       </form>
     </div>
