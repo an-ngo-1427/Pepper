@@ -2,7 +2,7 @@ import { useQuery,useMutation, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import { getUser, userLogin } from "../../QueryHelpers/sessionQuery"
 import { useNavigate } from "react-router-dom"
-import { Button } from '@chakra-ui/react'
+import { Button, Heading, Stack } from '@chakra-ui/react'
 
 export default function LogInPage(){
     const [username,setUsername] = useState('')
@@ -45,11 +45,14 @@ export default function LogInPage(){
 
     return(
         <div>
-            {formErr && Object.keys(formErr).map(ele=><div>{ele} : {formErr[ele]}</div>)}
             <form onSubmit={handleFormSubmit}>
-                <input onChange={(e)=>setUsername(e.target.value)}label='username' placeholder="username" required></input>
-                <input onChange={(e)=>setPassword(e.target.value)}label='password' placeholder="password" required></input>
-                <Button isLoading={userMutation.isPending} type='submit'>Submit</Button>
+                <Stack width='30%' bg='gray' padding={'20px'} margin='auto'>
+                    <Heading>Log In</Heading>
+                    {formErr && Object.keys(formErr).map(ele=><div style={{color:'#cb1d14'}}>{ele} : {formErr[ele]}</div>)}
+                    <input onChange={(e)=>setUsername(e.target.value)}label='username' placeholder="username" required></input>
+                    <input onChange={(e)=>setPassword(e.target.value)}label='password' type='password' placeholder="password" required></input>
+                    <Button isLoading={userMutation.isPending} type='submit'>Submit</Button>
+                </Stack>
             </form>
         </div>
     )
