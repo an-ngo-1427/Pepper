@@ -1,0 +1,29 @@
+.login-stack {
+  min-width: 350px;
+  max-width: 450px;
+  border: 5px solid rgb(137, 92, 216);
+  background-color: rgba(137, 92, 216, 0.235);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 80px;
+  margin: auto;
+}
+
+.login-input {
+  font-size: 16px;
+  padding: 4px;
+  border: 1px solid rgba(128, 128, 128, 0.281);
+  border-radius: 5px;
+  margin: 6px 0px;
+}
+
+.login-button {
+  border: 2px solid rgb(137, 92, 216);
+  background-color: rgba(137, 92, 216, 0.5);
+  color: black;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+}
